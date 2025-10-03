@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Website Pertama</title>
+  <style>
+    /* 🌸 Background dan font lucu */
+    body {
+      background-color: pink;
+      font-family: 'Comic Sans MS', cursive;
+      text-align: center;
+      padding: 20px;
+      color: #4d0039;
+    }
+
+    /* 🌈 Animasi Fade + Slide Up */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in-up {
+      opacity: 0;
+      animation: fadeInUp 1s ease-out forwards;
+    }
+
+    /* ⏱️ Delay animasi */
+    .delay-1 { animation-delay: 1; }
+    .delay-2 { animation-delay: 1; }
+    .delay-3 { animation-delay: 1s; }
+    .delay-4 { animation-delay: 1s; }
+    .delay-5 { animation-delay: 1s; }
+
+    body * {
+      animation-fill-mode: both;
+    }
+
+    /* ✨ Hover efek foto/video */
+    img:hover, video:hover {
+      transform: scale(1.03) rotate(1deg);
+      transition: 0.3s ease;
+    }
+
+    /* 🎀 Tombol lucu */
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      background-color: white;
+      border: 2px solid #ff69b4;
+      color: #ff1493;
+      cursor: pointer;
+      border-radius: 10px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ffccf2;
+      transform: scale(1.05);
+    }
+
+    /* 💌 Pesan kejutan */
+    #pesan {
+      display: none;
+      color: #d8195f;
+      font-size: 24px;
+      max-width: 600px;
+      margin: 20px auto;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1 class="fade-in-up delay-1">welcome homee sayaaaaang 😆🤍</h1>
+  <p class="fade-in-up delay-2">ini website pertama akuuu, buaaatt kamuuu :P</p>
+  <h2 class="fade-in-up delay-3">dibacaa yaaa ♡ jangan lupa pencet audio nya duluu ya 😚🌹</h2>
+
+  <!-- FOTO SLIDESHOW -->
+  <img id="slideshow" src="assets/cintaa.jpeg" width="300" alt="foto pacar akuu" class="fade-in-up delay-4">
+
+  <br><br>
+
+  <!-- TOMBOL SLIDESHOW -->
+  <button onclick="prevFoto()" class="fade-in-up delay-5">mundur</button>
+  <button onclick="nextFoto()" class="fade-in-up delay-5">maju</button>
+
+  <br><br>
+
+  <!-- AUDIO -->
+  <audio src="assets/alamak.mpeg" controls class="fade-in-up delay-5"></audio>
+
+  <br><br>
+
+  <!-- TOMBOL KEJUTAN -->
+  <button onclick="tampilPesan()" class="fade-in-up delay-5">bukaa yaaa cintaaaa</button>
+  <p id="pesan"></p>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    const fotoList = [
+      "assets/cintaa.jpeg",
+      "assets/versi jumat.jpeg",
+      "assets/versi kumis.jpeg",
+      "assets/fotbar 1.jpeg",
+      "assets/fotbar 2.jpeg",
+      "assets/fotbar 3.jpeg",
+    ];
+
+    let index = 0;
+
+    function nextFoto() {
+      index = (index + 1) % fotoList.length;
+      const img = document.getElementById('slideshow');
+      img.classList.remove('fade-in-up');
+      void img.offsetWidth; // reset animasi
+      img.src = fotoList[index];
+      img.classList.add('fade-in-up');
+    }
+
+    function prevFoto() {
+      index = (index - 1 + fotoList.length) % fotoList.length;
+      const img = document.getElementById('slideshow');
+      img.classList.remove('fade-in-up');
+      void img.offsetWidth;
+      img.src = fotoList[index];
+      img.classList.add('fade-in-up');
+    }
+
+    function tampilPesan() {
+      const pesan = `maaacii yaaa sayaaang 🥺🤍
+
+maaaci bangeeet udaa berubah ga deket deket cowo pas foto angkatan atau kelas, uda bikin aku tenang kamu ga macem macem huhuhuuuu aku ngerasa dihargain jugaa seneng banget akuu kamu berubah sayang 😩🤍🤕
+
+walaupun banyak orang anggep itu cuma hal kecil, bagi aku itu uda besaar banget sayang udaa lebii dari rasa kagum kamu sama jeno :P
+
+pokoknya makasih bangeet ya cantikk udaa ubah hal hal yang aku ga suka :< udaa bisa berubah, setia, juga aktif di LDK tahun ini, udaa keyenn bangeet ihh sayang <3
+
+jangan bosen bosen ubah kesalahan kitaa yaaa T^T
+
+tambaah sayaaaaangg banget banget bangeet sama kamuuu muah muah ♡🌹  ini sedikit buat kamu sekalian aku belajar hihi, semogaa kamuu sukaaaaa alafyuuuuww more and most cantikkk`;
+
+      const elemenPesan = document.getElementById('pesan');
+      elemenPesan.innerText = "";
+      elemenPesan.style.display = "block";
+
+      let i = 0;
+      function ketik() {
+        if (i < pesan.length) {
+          elemenPesan.innerText += pesan.charAt(i);
+          i++;
+          setTimeout(ketik, 25); // Kecepatan ketik
+        }
+      }
+      ketik();
+    }
+  </script>
+
+</body>
+</html>
