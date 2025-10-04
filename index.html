@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Website Untuk Kamu 🤍</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-color: #ffe6f0;
+      font-family: 'Comic Sans MS', cursive;
+      text-align: center;
+      padding: 40px;
+      color: #d8195f;
+    }
+
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    .delay-1 { animation-delay: 1.5s; }
+    .delay-2 { animation-delay: 1.5s; }
+    .delay-3 { animation-delay: 1.5s; }
+    .delay-4 { animation-delay: 1.5s; }
+    .delay-5 { animation-delay: 1.5s; }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    img {
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: 0.3s ease;
+    }
+
+    img:hover, video:hover {
+      transform: scale(1.03) rotate(1deg);
+    }
+
+    button {
+      background-color: #ff99cc;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 10px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff66a3;
+    }
+
+    #pesan {
+      font-size: 20px;
+      margin-top: 20px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 class="fade-in-up delay-1">welcome homee sayaaaaang 😆🤍</h1>
+  <p class="fade-in-up delay-2">ini website pertama akuuu, buaaatt kamuuu :P</p>
+
+  <h2 class="fade-in-up delay-3">dibacaa yaaa ♡ jangan lupa pencet audio nya ya 😚🌹</h2>
+
+  <br><br>
+
+  <!-- FOTO SLIDESHOW -->
+  <img id="slideshow" src="assets/cintaa.jpeg" width="300" class="fade-in-up delay-4">
+
+  <br><br>
+
+  <!-- TOMBOL SLIDESHOW -->
+  <button onclick="prevFoto()">mundur</button>
+  <button onclick="nextFoto()">maju</button>
+
+  <br><br>
+
+  <!-- AUDIO -->
+  <audio src="assets/WhatsApp Audio 2025-10-03 at 9.24.45 PM.mp4" controls class="fade-in-up delay-5"></audio>
+
+  <br><br>
+
+  <!-- TOMBOL KEJUTAN -->
+  <button onclick="tampilPesan()">bukaa yaaa cintaaaa</button>
+  <p id="pesan" style="display: none; color: #d8195f;"></p>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    const fotoList = [
+      "assets/cintaa.jpeg",
+      "assets/fotbar 1.jpeg",
+      "assets/fotbar 2.jpeg",
+      "assets/fotbar 3.jpeg",
+      "assets/versi jumat.jpeg",
+      "assets/versi kumis.jpeg",
+    ];
+
+    let index = 0;
+
+    function nextFoto() {
+      index = (index + 1) % fotoList.length;
+      document.getElementById('slideshow').src = fotoList[index];
+    }
+
+    function prevFoto() {
+      index = (index - 1 + fotoList.length) % fotoList.length;
+      document.getElementById('slideshow').src = fotoList[index];
+    }
+
+    function tampilPesan() {
+      const pesan = "maaacii yaaa sayaaang 🥺🤍 maaaci bangeeet udaa berubah ga deket deket cowo pas foto angkatan atau kelas, uda bikin aku tenang kamu ga macem macem huhuhuuuu seneng banget akuu kamu berubah sayang 😩🤍🤕 walaupun banyak orang anggep itu cuma hal kecil, bagi aku itu uda besaar banget sayang udaa lebii dari rasa kagum kamu sama jeno :P pokoknya nya makasih bangeet ya cantikk udaa ubah hal hal yang aku ga suka :< udaa bisaa berubah, setia, juga aktif di ldk tahun ini, udaa keyenn bangeet ihh sayang 🥹 jangan bosen bosen ubah kesalahan kitaa yaaa T^T tambaah sayaaaaangg banget banget bangeet sama kamuuu muah muah ♡🌹";
+      const elemenPesan = document.getElementById("pesan");
+      elemenPesan.style.display = "block";
+      elemenPesan.innerHTML = "";
+
+      let i = 0;
+      const interval = setInterval(() => {
+        elemenPesan.innerHTML += pesan.charAt(i);
+        i++;
+        if (i >= pesan.length) clearInterval(interval);
+      }, 20);
+    }
+  </script>
+
+</body>
+</html>
